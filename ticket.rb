@@ -1,5 +1,5 @@
 class Ticket
-  attr_accessor :ticket_id, :movie, :customer, :no_of_tickets
+  attr_accessor :ticket_id, :movie, :customer, :no_of_tickets, :price
 
   def initialize(ticket_id, no_of_tickets, movie, customer)
     @ticket_id = ticket_id
