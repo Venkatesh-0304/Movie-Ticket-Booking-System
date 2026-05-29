@@ -1,0 +1,2 @@
+class NotEnoughSeatsException < StandardError
+end

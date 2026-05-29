@@ -7,7 +7,3 @@ class Customer
     @booked_tickets = nil
   end
 end
-
-c1 = Customer.new("Venkatesh", 1)
-puts c1.name
-puts c1.customer_id
