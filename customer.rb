@@ -9,5 +9,5 @@ class Customer
 end
 
 c1 = Customer.new("Venkatesh", 1)
-# puts c1.name
-# puts c1.customer_id
+puts c1.name
+puts c1.customer_id
