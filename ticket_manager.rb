@@ -17,9 +17,6 @@ module TicketManager
   end
 
   def available_seats(movie, no_of_tickets)
-    if no_of_tickets <= 0
-      raise InvalidTicketCount, "Invalid ticket count"
-    end
     current_available_seats = movie.available_seats 
     if current_available_seats <  no_of_tickets
       raise NotEnoughSeatsException, "Not enough seats"
