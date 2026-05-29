@@ -1,17 +1,32 @@
 module TicketManager
   @@movies = []
   @@customers = []
+  @@tickets = []
 
   def movie_exist(movie)
     @@movies.find {|m| m.title == movie.title}
   end
 
   def customer_exist(customer)
-    @@customers.find {|c| c.customer_id == customer.customer_id}
+    found_customer = @@customers.find {|c| c.customer_id == customer.customer_id}
+    if found_customer != nil
+      return found_customer
+    else
+      raise CustomerNotFoundException, "Customer with #{customer.customer_id} is not found"
+    end
   end
 
   def available_seats(movie, no_of_tickets)
-    movie.available_seats 
+    current_available_seats = movie.available_seats 
+    if current_available_seats <  no_of_tickets
+      raise NotEnoughSeatsException, "Not enough seats"
+    else
+      current_available_seats
+    end
+  end
+
+  def calculate_amout(movie, no_of_tickets)
+    movie.ticket_price * no_of_tickets
   end
 
   def add_movie(movie)
@@ -33,14 +48,19 @@ module TicketManager
   end
 
   def check_criteria(movie, customer, no_of_tickets)
-    if movie_exist(movie) != nil && customer_exist(customer) != nil && movie.available_seats >= no_of_tickets
+    is_seat_available = available_seats(movie, no_of_tickets)
+    if movie_exist(movie) != nil && customer_exist(customer) != nil && is_seat_available != nil
       return "Criteria passed"
     end
   end
 
-  def book_ticket(movie, customer, no_of_tickets)
+  def book_ticket(movie, customer, ticket, no_of_tickets)
     if check_criteria(movie, customer, no_of_tickets) != nil
-      customer.booked_tickets = movie
+      amount = calculate_amout(movie, no_of_tickets)
+      ticket.price = amount
+      movie.available_seats -= no_of_tickets
+      puts "Ticket booked successfully"
+    else
     end
   end
 end

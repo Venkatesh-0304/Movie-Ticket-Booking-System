@@ -8,6 +8,7 @@ class Ticket
     @no_of_tickets = no_of_tickets
     @movie = movie
     @customer = customer
+    @price = nil
   end
 end
 
