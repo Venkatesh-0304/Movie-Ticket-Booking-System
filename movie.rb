@@ -11,7 +11,7 @@ end
 
 m1 = Movie.new("Toxic", "kannada", 300, 250)
 
-puts m1.title
-puts m1.language
-puts m1.ticket_price
-puts m1.available_seats
+# puts m1.title
+# puts m1.language
+# puts m1.ticket_price
+# puts m1.available_seats
