@@ -3,7 +3,6 @@ module TicketManager
     puts "Total amount : #{ticket.price * ticket.no_of_tickets}"
   end
 
-
   def display_booking_details(customer)
     if customer.booked_tickets != nil
       ticket = customer.booked_tickets

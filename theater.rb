@@ -1,8 +1,6 @@
-require_relative "ticket_manager"
 class Theater
   include TicketManager
   attr_accessor :name
-
   def initialize(name)
     @name = name
     @movies = []
@@ -78,7 +76,5 @@ class Theater
     else
       puts "Ticket Doesn't exist"
     end    
-  end
-
-  
+  end  
 end
