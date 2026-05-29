@@ -1,0 +1,2 @@
+class InvalidTicketCount < StandardError
+end
