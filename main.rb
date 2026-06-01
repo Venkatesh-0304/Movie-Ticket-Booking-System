@@ -9,6 +9,7 @@ t1 = Theater.new("Urvashi")
 m1 = Movie.new("Toxic", "kannada", 300, 250)
 c1 = Customer.new("Venkatesh", 1)
 c2 = Customer.new("Srinivas", 2)
+c3 = Customer.new("Shreyas", 3)
 tck1 = Ticket.new(1, 5, m1, c1)
 tck2 = Ticket.new(2, 2, m1, c2)
 

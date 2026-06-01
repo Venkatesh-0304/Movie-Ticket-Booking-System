@@ -17,7 +17,7 @@ module TicketManager
       raise InvalidTicketCount, "Invalid ticket count"
     elsif movie.available_seats < no_of_tickets
       raise NotEnoughSeatsException, "Not enough seats"
-    elsif customer.customer_id == nil
+    elsif find_customer(customer) == nil
       raise CustomerNotFoundException, "Customer not found"
     end
 
@@ -69,7 +69,7 @@ module TicketManager
     end    
   end  
 
-  def calculate_amout(ticket)
+  def calculate_amount(ticket)
     puts "Total amount : #{ticket.price * ticket.no_of_tickets}"
   end
 
