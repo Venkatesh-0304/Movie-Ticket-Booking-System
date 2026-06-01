@@ -4,10 +4,6 @@ class Customer
   def initialize(name, customer_id)
     @name = name
     @customer_id = customer_id
-    @booked_tickets = nil
+    @booked_tickets = []
   end
 end
-
-c1 = Customer.new("Venkatesh", 1)
-puts c1.name
-puts c1.customer_id
