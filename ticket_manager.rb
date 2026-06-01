@@ -42,7 +42,7 @@ module TicketManager
     if find_customer(customer) != nil
       puts "#{customer.name} with #{customer.customer_id} already exist"
     else
-      @@customers = customer
+      @customers << customer
       puts "#{customer.name} added successfully"
     end
   end
@@ -52,7 +52,7 @@ module TicketManager
       ticket.price = movie.ticket_price
       @tickets << ticket
       movie.available_seats -= no_of_tickets
-      customer.booked_tickets = ticket
+      customer.booked_tickets << ticket
       puts "Ticket booked successfully"
     end
   end
@@ -62,7 +62,7 @@ module TicketManager
       movie = ticket.movie
       customer = ticket.customer
       @tickets.delete(ticket)
-      customer.booked_tickets = nil
+      customer.booked_tickets.delete(ticket)
       puts "Movie : #{movie.title} No of tickets : #{ticket.no_of_tickets} - Cancelled successfully"
     else
       puts "Ticket Doesn't exist"
@@ -74,12 +74,17 @@ module TicketManager
   end
 
   def display_booking_details(customer)
-    if customer.booked_tickets != nil
-      ticket = customer.booked_tickets
-      movie = ticket.movie
-      puts "Movie name : #{movie.title}"
-      puts "Movie language : #{movie.language}"
-      puts "Price : #{ticket.price}"
+    if customer.booked_tickets.empty?
+      puts "No booking found"
+    else
+      customer.booked_tickets.each do |t|
+        movie = ticket.movie
+        puts "Movie name : #{movie.title}"
+        puts "Language : #{movie.language}"
+        puts "No of tickets : #{ticket.no_of_tickets}"
+        puts "Price : #{ticket.price}"
+        puts "Total amount : #{ticket.price * ticket.no_of_tickets}"
+      end
     end
   end
 end
